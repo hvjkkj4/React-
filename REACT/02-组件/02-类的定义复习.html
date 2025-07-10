@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    class Person {
+      constructor(name, age) {
+        this.name = name
+        this.age = age
+      }
+      speak() {
+        console.log(this)
+        console.log(`我叫${this.name}，今年${this.age}岁了`)
+      }
+    }
+
+    class Student extends Person {
+      constructor(name, age, grade) {
+        super(name, age)
+        this.grade = grade
+      }
+      speak() {
+        console.log(this)
+        console.log(`我叫${this.name}，今年${this.age}岁了,在读${this.grade}`)
+      }
+      study() {
+        console.log('每天都在努力学习')
+      }
+    }
+
+    // const p1 = new Person('小敏', 18)
+    // const p2 = new Person('小黑', 20)
+    // p1.speak()
+    // p2.speak()
+    const s1 = new Student('小白', 15, '高一')
+    s1.speak()
+    s1.study()
+  </script>
+</body>
+
+</html>

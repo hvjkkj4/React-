@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="test"></div>
+
+  <!-- react底层逻辑 -->
+  <script type="text/javascript" src="../js/react.development.js"></script>
+  <!-- 支持react控制DOM -->
+  <script type="text/javascript" src="../js/react-dom.development.js"></script>
+  <!-- 把jsx转换为js -->
+  <script type="text/javascript" src="../js/babel.min.js"></script>
+
+  <script type="text/babel">
+    class Life extends React.Component {
+      // 初始化状态
+      state = { opacity: 1 }
+
+      // 自定义回调函数
+      death = () => {
+        // 卸载组件
+        ReactDOM.unmountComponentAtNode(document.querySelector('.test'))
+        // 关闭定时器
+        clearInterval(this.timer)
+      }
+
+      // 组件挂载到页面
+      componentDidMount() {
+        // 组件一挂载就开启定时器
+        this.timer = setInterval(() => {
+          let { opacity } = this.state
+          opacity -= 0.1
+          if (opacity <= 0) opacity = 1
+          this.setState({ opacity })
+        }, 200)
+      }
+
+      // 组件初始化或状态更新
+      render() {
+        return (
+          <div>
+            <h2 style={{ opacity: this.state.opacity }}>学不会react怎么办？</h2>
+            <button onClick={this.death}>不活了</button>
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(<Life />, document.querySelector('.test'))
+  </script>
+
+</body>
+
+</html>

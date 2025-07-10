@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="test"></div>
+
+  <!-- react底层逻辑 -->
+  <script type="text/javascript" src="../js/react.development.js"></script>
+  <!-- 支持react控制DOM -->
+  <script type="text/javascript" src="../js/react-dom.development.js"></script>
+  <!-- 把jsx转换为js -->
+  <script type="text/javascript" src="../js/babel.min.js"></script>
+
+  <script type="text/babel">
+    class Demo extends React.Component {
+      // 创造容器
+      myRef = React.createRef()
+      myRef2 = React.createRef()
+
+      // 点击按钮显示左边文字
+      showData1 = () => {
+        alert(this.myRef.current.value)
+      }
+
+      // 失去焦点显示右边文字
+      showData2 = () => {
+        alert(this.myRef2.current.value)
+      }
+
+      render() {
+        return (
+          <div>
+            <input ref={this.myRef} type="text" placeholder="请输入文字" />&nbsp;
+            <button onClick={this.showData1}>点击按钮显示文字</button>&nbsp;
+            <input ref={this.myRef2} onBlur={this.showData2} type="text" placeholder="失去焦点显示文字" />&nbsp;
+          </div>
+        )
+      }
+    }
+    ReactDOM.render(<Demo />, document.querySelector('.test'))
+  </script>
+
+</body>
+
+</html>
