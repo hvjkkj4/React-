@@ -1,6 +1,5 @@
 # React
 
-[TOC]
 
 ## React入门
 
