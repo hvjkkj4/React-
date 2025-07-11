@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="test"></div>
+
+  <!-- react底层逻辑 -->
+  <script type="text/javascript" src="../js/react.development.js"></script>
+  <!-- 支持react控制DOM -->
+  <script type="text/javascript" src="../js/react-dom.development.js"></script>
+  <!-- 把jsx转换为js -->
+  <script type="text/javascript" src="../js/babel.min.js"></script>
+
+  <script type="text/babel">
+    class Demo extends React.Component {
+      // 点击按钮显示左边文字
+      showData1 = () => {
+        const { input1 } = this
+        alert(input1.value)
+      }
+
+      // 失去焦点显示右边文字
+      showData2 = () => {
+        const { input2 } = this
+        alert(input2.value)
+      }
+
+      render() {
+        return (
+          <div>
+            <input ref={c => this.input1 = c} type="text" placeholder="请输入文字" />&nbsp;
+            <button onClick={this.showData1}>点击按钮显示文字</button>&nbsp;
+            <input ref={c => this.input2 = c} onBlur={this.showData2} type="text" placeholder="失去焦点显示文字" />&nbsp;
+          </div>
+        )
+      }
+    }
+    ReactDOM.render(<Demo />, document.querySelector('.test'))
+  </script>
+
+</body>
+
+</html>
