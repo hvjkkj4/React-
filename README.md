@@ -948,7 +948,7 @@ class Login extends React.Component {
 + 全局安装，npm i create-react-app -g
 + 切换到想创建项目的文件夹，create-react-app hello-react
 + 进入项目文件夹
-+ 启动项目：npm start/yarm start(推荐，yarm和react都是facebook开发的)
++ 启动项目：npm start/yarn start(推荐，yarn和react都是facebook开发的)
 
 ### react脚手架项目结构
 
